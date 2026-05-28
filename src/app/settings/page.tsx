@@ -4,11 +4,19 @@ import { useState } from "react";
 
 export default function SettingsPage() {
   const [name, setName] = useState("Yukta Thakur");
+
   const [email, setEmail] = useState(
     "yuktaravindrathakur2006@gmail.com"
   );
 
   const [password, setPassword] = useState("");
+
+  const [darkMode, setDarkMode] = useState(true);
+
+  const [emailNotifications, setEmailNotifications] =
+    useState(true);
+
+  const [autoSave, setAutoSave] = useState(false);
 
   const handleProfileSave = () => {
     localStorage.setItem(
@@ -131,19 +139,54 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <span>Dark Mode</span>
 
-              <input type="checkbox" defaultChecked />
+              <input
+                type="checkbox"
+                checked={darkMode}
+                onChange={(e) => {
+                  setDarkMode(e.target.checked);
+
+                  localStorage.setItem(
+                    "darkMode",
+                    JSON.stringify(e.target.checked)
+                  );
+                }}
+              />
             </div>
 
             <div className="flex items-center justify-between">
               <span>Email Notifications</span>
 
-              <input type="checkbox" defaultChecked />
+              <input
+                type="checkbox"
+                checked={emailNotifications}
+                onChange={(e) => {
+                  setEmailNotifications(
+                    e.target.checked
+                  );
+
+                  localStorage.setItem(
+                    "emailNotifications",
+                    JSON.stringify(e.target.checked)
+                  );
+                }}
+              />
             </div>
 
             <div className="flex items-center justify-between">
               <span>Auto Save</span>
 
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={autoSave}
+                onChange={(e) => {
+                  setAutoSave(e.target.checked);
+
+                  localStorage.setItem(
+                    "autoSave",
+                    JSON.stringify(e.target.checked)
+                  );
+                }}
+              />
             </div>
           </div>
         </div>
