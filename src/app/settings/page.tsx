@@ -1,4 +1,40 @@
+"use client";
+
+import { useState } from "react";
+
 export default function SettingsPage() {
+  const [name, setName] = useState("Yukta Thakur");
+  const [email, setEmail] = useState(
+    "yuktaravindrathakur2006@gmail.com"
+  );
+
+  const [password, setPassword] = useState("");
+
+  const handleProfileSave = () => {
+    localStorage.setItem(
+      "profile",
+      JSON.stringify({
+        name,
+        email,
+      })
+    );
+
+    alert("Profile saved successfully!");
+  };
+
+  const handlePasswordUpdate = () => {
+    if (!password) {
+      alert("Enter password");
+      return;
+    }
+
+    localStorage.setItem("password", password);
+
+    alert("Password updated successfully!");
+
+    setPassword("");
+  };
+
   return (
     <main className="min-h-screen bg-black text-white p-8">
       <h1 className="text-4xl font-bold mb-8">
@@ -7,13 +43,13 @@ export default function SettingsPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         
-        {/* Profile Settings */}
+        {/* Profile */}
         <div className="border border-zinc-800 rounded-2xl p-6 bg-zinc-950">
-          <h2 className="text-2xl font-semibold mb-4">
+          <h2 className="text-2xl font-semibold mb-6">
             👤 Profile
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
               <label className="text-sm text-zinc-400">
                 Full Name
@@ -21,8 +57,11 @@ export default function SettingsPage() {
 
               <input
                 type="text"
-                placeholder="Yukta Thakur"
-                className="w-full mt-1 px-4 py-3 rounded-lg bg-black border border-zinc-700 outline-none focus:border-blue-500"
+                value={name}
+                onChange={(e) =>
+                  setName(e.target.value)
+                }
+                className="w-full mt-2 px-4 py-3 rounded-lg bg-black border border-zinc-700 outline-none focus:border-blue-500"
               />
             </div>
 
@@ -33,24 +72,30 @@ export default function SettingsPage() {
 
               <input
                 type="email"
-                placeholder="yourmail@gmail.com"
-                className="w-full mt-1 px-4 py-3 rounded-lg bg-black border border-zinc-700 outline-none focus:border-blue-500"
+                value={email}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
+                className="w-full mt-2 px-4 py-3 rounded-lg bg-black border border-zinc-700 outline-none focus:border-blue-500"
               />
             </div>
 
-            <button className="bg-blue-600 hover:bg-blue-700 transition px-5 py-3 rounded-lg font-medium">
+            <button
+              onClick={handleProfileSave}
+              className="bg-blue-600 hover:bg-blue-700 transition px-5 py-3 rounded-lg font-medium"
+            >
               Save Changes
             </button>
           </div>
         </div>
 
-        {/* Security Settings */}
+        {/* Security */}
         <div className="border border-zinc-800 rounded-2xl p-6 bg-zinc-950">
-          <h2 className="text-2xl font-semibold mb-4">
+          <h2 className="text-2xl font-semibold mb-6">
             🔒 Security
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
               <label className="text-sm text-zinc-400">
                 Change Password
@@ -58,24 +103,31 @@ export default function SettingsPage() {
 
               <input
                 type="password"
+                value={password}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
                 placeholder="New Password"
-                className="w-full mt-1 px-4 py-3 rounded-lg bg-black border border-zinc-700 outline-none focus:border-blue-500"
+                className="w-full mt-2 px-4 py-3 rounded-lg bg-black border border-zinc-700 outline-none focus:border-blue-500"
               />
             </div>
 
-            <button className="bg-red-600 hover:bg-red-700 transition px-5 py-3 rounded-lg font-medium">
+            <button
+              onClick={handlePasswordUpdate}
+              className="bg-red-600 hover:bg-red-700 transition px-5 py-3 rounded-lg font-medium"
+            >
               Update Password
             </button>
           </div>
         </div>
 
-        {/* App Preferences */}
+        {/* Preferences */}
         <div className="border border-zinc-800 rounded-2xl p-6 bg-zinc-950">
-          <h2 className="text-2xl font-semibold mb-4">
+          <h2 className="text-2xl font-semibold mb-6">
             ⚙️ Preferences
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div className="flex items-center justify-between">
               <span>Dark Mode</span>
 
@@ -98,15 +150,13 @@ export default function SettingsPage() {
 
         {/* About */}
         <div className="border border-zinc-800 rounded-2xl p-6 bg-zinc-950">
-          <h2 className="text-2xl font-semibold mb-4">
+          <h2 className="text-2xl font-semibold mb-6">
             ℹ️ About
           </h2>
 
           <div className="space-y-3 text-zinc-300">
-            <p>
-              <span className="font-semibold">
-                AI App Generator
-              </span>
+            <p className="font-semibold">
+              AI App Generator
             </p>
 
             <p>Version: 1.0.0</p>
