@@ -75,6 +75,8 @@ model User {
 
   accounts Account[]
   sessions Session[]
+
+  settings UserSettings?
 }
 
 model VerificationToken {
@@ -94,4 +96,14 @@ model OtpCode {
   createdAt DateTime @default(now())
 
   @@index([email])
+}
+
+model UserSettings {
+  id                 String  @id @default(cuid())
+  userId             String  @unique
+  darkMode           Boolean @default(true)
+  emailNotifications Boolean @default(true)
+  autoSave           Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
