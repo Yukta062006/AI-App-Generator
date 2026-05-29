@@ -112,7 +112,7 @@ User fills form → POST /api/auth/register (or send-otp)
 
 ### Step 1 — Clone the Repository
 ```bash
-git clone https://github.com/Dhanya-sri-K/AI-App-Generator.git
+git clone https://github.com/Yukta062006/AI-App-Generator.git
 cd AI-App-Generator
 ```
 
@@ -216,9 +216,9 @@ npm start
 
 ## 👩‍💻 Author
 
-**Dhanya Sri K**
-- GitHub: [@Dhanya-sri-K](https://github.com/Dhanya-sri-K)
-
+**Yukta Thakur**
+- GitHub: [@Yukta062006](https://github.com/Yukta062006)
+- LinkedIn: [Yukta Thakur](https://www.linkedin.com/in/yukta-thakur-38251a328)
 ---
 
 ## 📄 License

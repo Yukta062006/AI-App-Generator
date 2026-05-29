@@ -18,7 +18,7 @@ This app is a **Next.js** project with **PostgreSQL**. The fastest way to get a 
 2. In **this project folder only** (not your whole user folder):
 
    ```powershell
-   cd "c:\Users\DhanyaSri\Downloads\internship assessment"
+  cd "C:\Users\Yukta Thakur\Downloads\internship assessment"
    git init
    git add .
    git commit -m "Initial commit for deployment"
