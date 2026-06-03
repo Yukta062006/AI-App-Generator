@@ -221,6 +221,3 @@ npm start
 - LinkedIn: [Yukta Thakur](https://www.linkedin.com/in/yukta-thakur-38251a328)
 ---
 
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
